@@ -1,0 +1,7 @@
+def alpha(in_string):
+    return ''.join(sorted(in_string))
+
+my_string=input('Enter string: ')
+print(alpha(my_string))
+
+
