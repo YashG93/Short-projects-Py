@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: #b6b771;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #1e1e2f;
+
+            font-size: 40px;
+
+            margin-bottom: 20px;
+        }
+
+        .calculator {
+            width: 330px;
+
+            padding: 25px;
+
+            background: #1e1e2f;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        #display {
+
+            width: 100%;
+
+            height: 75px;
+
+            margin-bottom: 20px;
+
+            padding: 10px 15px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background: #2d2d44;
+
+            color: white;
+
+            font-size: 30px;
+
+            text-align: right;
+
+            outline: none;
+        }
+
+        .buttons {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 12px;
+        }
+
+        button {
+
+            height: 60px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background: #35354d;
+
+            color: white;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition: 0.15s;
+        }
+
+        button:hover {
+            background: #4a4a65;
+        }
+
+        button:active {
+            transform: scale(0.94);
+        }
+
+        .operator {
+            background: #ff9f0a;
+        }
+
+        .operator:hover {
+            background: #ffb52e;
+        }
+
+        .equals {
+            background: #30d158;
+        }
+
+        .equals:hover {
+            background: #45df6b;
+        }
+
+        .clear {
+            background: #ff453a;
+        }
+
+        .clear:hover {
+            background: #ff6259;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Calculator</h1>
+        <div class="calculator">
+
+            <form method="POST">
+
+                <input 
+                    type="text"
+                    id="display"
+                    name="expression"
+                    value="{{ exception if exception else (result if result is not none else '') }}"
+                    exception="{{exception}}"
+                    readonly>
+                
+                <div class="buttons">
+                    <button type="button" onclick="addNumber('7')">7</button>
+                    <button type="button" onclick="addNumber('8')">8</button>
+                    <button type="button" onclick="addNumber('9')">9</button>
+                    <button type="button" class="operator" onclick="addOperator('+')">+</button>
+
+                    <button type="button" onclick="addNumber('4')">4</button>
+                    <button type="button" onclick="addNumber('5')">5</button>
+                    <button type="button" onclick="addNumber('6')">6</button>
+                    <button type="button" class="operator" onclick="addOperator('-')">-</button>
+
+                    <button type="button" onclick="addNumber('1')">1</button>
+                    <button type="button" onclick="addNumber('2')">2</button>
+                    <button type="button" onclick="addNumber('3')">3</button>
+                    <button type="button" class="operator" onclick="addOperator('x')">x</button>
+
+                    <button type="button" onclick="addNumber('0')">0</button>
+                    <button type="button" class="clear" onclick="clearDisplay()">C</button>
+                    <button type="submit" class="equals">=</button>
+                    <button type="button" class="operator" onclick="addOperator('%')">%</button>
+                </div>
+            </form>
+
+        </div>
+        <script>
+            const display=document.getElementById('display');
+
+            function addNumber(number) {
+            document.getElementById("display").value += number;
+            }
+
+            function addOperator(operator) {
+                document.getElementById("display").value += operator;
+            }
+
+            function clearDisplay() {
+                document.getElementById("display").value = "";
+            }
+        </script>
+        </body>
+        </html>
